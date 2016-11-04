@@ -3,12 +3,14 @@ import React from 'react';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
+import sampleFishes from '../sample-fishes';
 
 export default class App extends React.Component{
 
   constructor(props){
     super(props);
     this.addFish = this.addFish.bind(this);
+    this.loadSamples = this.loadSamples.bind(this);
     this.state={
       fishes: {},
       order: {},
@@ -26,6 +28,13 @@ export default class App extends React.Component{
       })
   }
 
+  loadSamples() {
+    console.log('load sample');
+    this.setState({
+      fishes: sampleFishes,
+    });
+  }
+
   render() {
     return (
       <div className='catch-of-the-day'>
@@ -33,7 +42,7 @@ export default class App extends React.Component{
           <Header tagLine="Fresh Seafood Market"/>
         </div>
         <Order />
-        <Inventory addFish={this.addFish}/>
+        <Inventory addFish={this.addFish} loadSamples={this.loadSamples} />
       </div>
     )
   }
