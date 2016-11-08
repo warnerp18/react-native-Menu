@@ -6,7 +6,6 @@ class Fish extends React.Component{
 
   render() {
     const { details, index } = this.props;
-    console.log(this.props);
     const isAvailable = details.status === 'available';
     const buttonText = isAvailable ? 'Add To Order' : 'Sold Out!';
     return(
